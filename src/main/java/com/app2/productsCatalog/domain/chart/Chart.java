@@ -12,7 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.media.SchemaProperty;
 
 @Schema(description = "Entidade que representa um carrinho de compras no sistema")
 @Table(name ="chart")
@@ -55,7 +54,7 @@ public class Chart {
 	@Column(name = "total_value")
 	private Double totalValue;
 	
-	@Schema(hidden = true) // Oculta da documentação Swagger
+
 	public Chart(UUID user_id, Double total_value, int qtd_itens) {
 		this.userId = user_id;
 		this.qtdItens = qtd_itens;
