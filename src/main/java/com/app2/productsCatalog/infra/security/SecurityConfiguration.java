@@ -34,6 +34,12 @@ public class SecurityConfiguration {
 			.cors(cors -> cors.configurationSource(corsConfigurationSource()))
 			.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 			.authorizeHttpRequests(auth -> auth
+					.requestMatchers("/swagger-ui/**").permitAll()
+					.requestMatchers("/v3/api-docs/**").permitAll()
+	                .requestMatchers("/swagger-ui.html").permitAll()
+	                .requestMatchers("/swagger-resources/**").permitAll()
+	                .requestMatchers("/webjars/**").permitAll()
+	                .requestMatchers("/configuration/**").permitAll()
 					.requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
 					.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
 					.requestMatchers(HttpMethod.POST, "/product/add").hasRole("ADMIN")
@@ -55,7 +61,13 @@ public class SecurityConfiguration {
 		
 		configuration.setAllowedOriginPatterns(Arrays.asList(
 				"localhost:*",
-				 "http://127.0.0.1:5500"
+				"http://127.0.0.1:5500",
+				"/swagger-ui/**",
+                "/swagger-ui.html",
+                "/v3/api-docs/**",
+                "/v3/api-docs.yaml",
+                "/swagger-resources/**",
+                "/webjars/**"
 				));
 		configuration.setAllowedMethods(Arrays.asList(
 				"GET","POST","PUT","DELETE","OPTIONS"
