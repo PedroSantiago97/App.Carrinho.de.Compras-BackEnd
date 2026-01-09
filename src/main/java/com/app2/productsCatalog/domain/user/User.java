@@ -350,5 +350,14 @@ public class User implements UserDetails {
      * 
      * @return String representando o usuário sem informações sensíveis
      */
-    
+    @Override
+    @Schema(hidden = true)
+    public String toString() {
+        return String.format(
+            "User{id=%s, login='%s', role=%s}",
+            id != null ? id.toString() : "null",
+            login,
+            role
+        );
+    }
 }
