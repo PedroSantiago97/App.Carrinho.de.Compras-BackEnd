@@ -247,8 +247,7 @@ public class User implements UserDetails {
      * @see GrantedAuthority
      */
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        if (this.role == UserRole.ADMIN) {
+    public Collection<? extends GrantedAuthority> getAuthorities() { if (this.role == UserRole.ADMIN) {
             return List.of(
                 new SimpleGrantedAuthority("ROLE_ADMIN"), 
                 new SimpleGrantedAuthority("ROLE_USER")
@@ -351,14 +350,5 @@ public class User implements UserDetails {
      * 
      * @return String representando o usuário sem informações sensíveis
      */
-    @Override
-    @Schema(hidden = true)
-    public String toString() {
-        return String.format(
-            "User{id=%s, login='%s', role=%s}",
-            id != null ? id.toString() : "null",
-            login,
-            role
-        );
-    }
+    
 }
